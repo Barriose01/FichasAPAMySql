@@ -1,7 +1,6 @@
 from menuOpciones import Menu
 
-salida = "y"
-while salida == "y":
+while True:
 	print("\nElegir el medio que se quiere citar: ")
 	print("(1): Web")
 	print("(2): Libro")

@@ -26,9 +26,9 @@ class Menu:
             if str(opcion).lower().strip()  == "1":
                 crearFicha = self.bd.crearFicha()
                 if crearFicha == "libro":
-                    self.ql.crearFichaLibro()
+                    self.ql.recolectarInfoFichaLibros()
                 else:
-                    self.qw.crearFichaWeb()
+                    self.qw.recolectarInfoFichaWeb()
 
             elif str(opcion).lower().strip()   == "2":
                 self.bd.mostrarFicha()

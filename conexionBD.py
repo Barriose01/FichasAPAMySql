@@ -1,12 +1,15 @@
 import mysql.connector
 
 class Conexion:
-    db = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        database = "APAFichas"
-    )
-    cursor = db.cursor(buffered=True)
+    try:
+        db = mysql.connector.connect(
+            host = "localhost",
+            user = "root",
+            database = "APAFichas"
+        )
+        cursor = db.cursor(buffered=True)
+    except:
+        print("Error de conexion a la base de datos")
 
     def __init__(self, ficha):
         self.ficha = ficha
@@ -19,26 +22,32 @@ class Conexion:
             return "web"
 
     def mostrarFicha(self):
-        fichas = self.obtenerFicha()
-        for x in fichas:
-            print("-" + str(x))
+        try:
+            fichas = self.obtenerFicha()
+            for x in fichas:
+                print("-" + str(x))
+        except:
+            print("Error al mostrar las fichas")
 
     def eliminarFicha(self):
-        while True:
-            fichas = self.obtenerFicha()
-            print()
-            for a in fichas:
-                print(a)
-            print("(q): Volver \n")
-            try:
-                opcion = input("Ingrese el id de la ficha a eliminar: ")
-                if opcion.lower().strip()  == "q":
-                    break
-                else:
-                    self.eliminarFichaConId(opcion)
-            except:
-                print("Debe ingresar una opcion valida")
-                continue
+        try:
+            while True:
+                fichas = self.obtenerFicha()
+                print()
+                for a in fichas:
+                    print(a)
+                print("(q): Volver \n")
+                try:
+                    opcion = input("Ingrese el id de la ficha a eliminar: ")
+                    if opcion.lower().strip()  == "q":
+                        break
+                    else:
+                        self.eliminarFichaConId(opcion)
+                except:
+                    print("Debe ingresar una opcion valida")
+                    continue
+        except:
+            print("Error al eliminar las fichas")
             
     def eliminarFichaConId(self,id):
         elId = self.obtenerID()
@@ -78,15 +87,24 @@ class Conexion:
             self.buscarCualquierCosa(ficha, "titulo",seleccion.title().strip())
 
     def buscarCualquierCosa(self, ficha, opcion, seleccion):
-        self.cursor.execute("SELECT ficha FROM " + ficha + " WHERE " + opcion + " LIKE '%" + seleccion + "%'")
-        for x in self.cursor:
-            print(x)
-        print()
+        try:
+            self.cursor.execute("SELECT ficha FROM " + ficha + " WHERE " + opcion + " LIKE '%" + seleccion + "%'")
+            for x in self.cursor:
+                print(x)
+            print()
+        except:
+            print("Error al buscar ficha")
     
     def obtenerID(self):
-        self.cursor.execute("SELECT id FROM " + self.ficha)
-        return self.cursor
+        try:
+            self.cursor.execute("SELECT id FROM " + self.ficha)
+            return self.cursor
+        except:
+            print("Error al obtener id de la ficha")
 
     def obtenerFicha(self):
-        self.cursor.execute("SELECT id, ficha FROM " + self.ficha)
-        return self.cursor
+        try:
+            self.cursor.execute("SELECT id, ficha FROM " + self.ficha)
+            return self.cursor
+        except:
+            print("Error al obtener la ficha")
