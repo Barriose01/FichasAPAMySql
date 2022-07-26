@@ -18,7 +18,7 @@ distintas opciones:
 Al elegir la primera opcion (Crear una ficha), el programa nos pedira que ingresemos la informacion del medio que 
 querramos citar. En este caso, queremos generar una ficha bibliografica del libro "Harry Potter y la piedra filosofal".
 
-![image](https://user-images.githubusercontent.com/107152796/179368129-757563e4-bdb7-4e16-bf72-aa1709ac5927.png)
+![image](https://user-images.githubusercontent.com/107152796/181105207-972330e7-ce0a-4439-96d0-c6599510d814.png)
 
 
 Llenamos la informacion y nos generara una ficha en formato APA:
