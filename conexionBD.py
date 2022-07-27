@@ -103,8 +103,6 @@ class Conexion:
             print("Error al obtener id de la ficha")
 
     def obtenerFicha(self):
-        try:
-            self.cursor.execute("SELECT id, ficha FROM " + self.ficha)
-            return self.cursor
-        except:
-            print("Error al obtener la ficha")
+        self.cursor.execute("SELECT id, ficha FROM " + self.ficha)
+        return self.cursor
+        

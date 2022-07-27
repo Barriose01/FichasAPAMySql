@@ -47,7 +47,7 @@ class Menu:
 
     def buscarLibro(self,ficha):
         while True:
-            print("BUSQUEDA DE FICHA")
+            print("\nBUSQUEDA DE FICHA")
             print("(1): Buscar por nombre del autor")
             print("(2): Buscar por apellido del autor")
             print("(3): Buscar por año de publicacion")
@@ -60,10 +60,10 @@ class Menu:
             try:
                 opcion = int(input())
                 if opcion < 1 or opcion > 8:
-                    print("Debe elegir una opcion valida\n")  
+                    print("Debe elegir una opcion valida")  
                     continue
             except:
-                print("Debe elegir una opcion valida\n")
+                print("Debe elegir una opcion valida")
                 continue
             if str(opcion).lower().strip()  == "8":
                 break
@@ -74,7 +74,7 @@ class Menu:
     
     def buscarWeb(self, ficha):
         while True:
-            print("BUSQUEDA DE FICHA")
+            print("\nBUSQUEDA DE FICHA")
             print("(1): Buscar por nombre del autor")
             print("(2): Buscar por apellido del autor")
             print("(3): Buscar por año de publicacion")
@@ -86,10 +86,10 @@ class Menu:
             try:
                 opcion = int(input())
                 if opcion < 1 or opcion > 7:
-                    print("Debe elegir una opcion valida\n")  
+                    print("Debe elegir una opcion valida")  
                     continue
             except:
-                print("Debe elegir una opcion valida\n")
+                print("Debe elegir una opcion valida")
                 continue
             if str(opcion).lower().strip()  == "7":
                 break
