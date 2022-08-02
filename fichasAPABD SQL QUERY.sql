@@ -13,7 +13,7 @@ titulo varchar(100),
 lugarPublicacion varchar(20),
 paisPublicacion varchar(20),
 editorial varchar(20),
-ficha varchar(100));
+ficha varchar(200));
 
 DROP TABLE IF EXISTS fichasWeb;
 CREATE TABLE fichasWeb(
@@ -24,10 +24,9 @@ ano char(4),
 titulo varchar(100),
 fechaRecuperacion varchar(30),
 enlaceRecuperacion varchar(100),
-ficha varchar(100));
+ficha varchar(200));
 
-alter table fichasLibros modify ficha varchar(200);
-alter table fichasWeb modify ficha varchar(200);
+
 
 
 

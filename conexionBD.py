@@ -24,8 +24,11 @@ class Conexion:
     def mostrarFicha(self):
         try:
             fichas = self.obtenerFicha()
-            for x in fichas:
-                print("-" + str(x))
+            if len(fichas) > 0:
+                for x in fichas:
+                    print("-" + str(x))
+            else:
+                print("No hay fichas para mostrar")
         except:
             print("Error al mostrar las fichas")
 
@@ -33,19 +36,23 @@ class Conexion:
         try:
             while True:
                 fichas = self.obtenerFicha()
-                print()
-                for a in fichas:
-                    print(a)
-                print("(q): Volver \n")
-                try:
-                    opcion = input("Ingrese el id de la ficha a eliminar: ")
-                    if opcion.lower().strip()  == "q":
-                        break
-                    else:
-                        self.eliminarFichaConId(opcion)
-                except:
-                    print("Debe ingresar una opcion valida")
-                    continue
+                if len(fichas) > 0:
+                    print()
+                    for a in fichas:
+                        print(a)
+                    print("(q): Volver \n")
+                    try:
+                        opcion = input("Ingrese el id de la ficha a eliminar: ")
+                        if opcion.lower().strip()  == "q":
+                            break
+                        else:
+                            self.eliminarFichaConId(opcion)
+                    except:
+                        print("Debe ingresar una opcion valida")
+                        continue
+                else:
+                    print("No hay fichas para eliminar")
+                    break
         except:
             print("Error al eliminar las fichas")
             
@@ -87,11 +94,17 @@ class Conexion:
             self.buscarCualquierCosa(ficha, "titulo",seleccion.title().strip())
 
     def buscarCualquierCosa(self, ficha, opcion, seleccion):
+        fichas = []
         try:
             self.cursor.execute("SELECT ficha FROM " + ficha + " WHERE " + opcion + " LIKE '%" + seleccion + "%'")
             for x in self.cursor:
-                print(x)
-            print()
+                fichas.append(x)
+            print("Resultados para '" + seleccion + "': ")
+            if len(fichas) > 0:
+                for ficha in fichas:
+                    print(ficha)
+            else:
+                print("No hay fichas para mostrar")
         except:
             print("Error al buscar ficha")
     
@@ -103,6 +116,9 @@ class Conexion:
             print("Error al obtener id de la ficha")
 
     def obtenerFicha(self):
+        fichas = []
         self.cursor.execute("SELECT id, ficha FROM " + self.ficha)
-        return self.cursor
+        for ficha in self.cursor:
+            fichas.append(ficha)
+        return fichas
         
